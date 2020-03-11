@@ -25,14 +25,13 @@ class bitbnsController():
         getJsonRates = getRawRates.json()
         return getJsonRates
 
-    def getRates(self,currentList):
+    def getRates(self,currencyList):
         lastRates = self.getJSONData()
         returnDictionary = {}
-        for i in currentList: # Apply try catch if currency is not present
-            currentInfo = lastRates[i]
+        for currency in currencyList: # Apply try catch if currency is not present
+            currentInfo = lastRates[currency]
             buySellList = []
             buySellList.append(currentInfo['highest_buy_bid'])
             buySellList.append(currentInfo['lowest_sell_bid'])
-            returnDictionary[i] = buySellList
+            returnDictionary[currency] = buySellList
         return returnDictionary
-        
